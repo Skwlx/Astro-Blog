@@ -1,7 +1,7 @@
 ---
 const pageTitle = "About me";
 const identity = {
-    firstName: "Pawel",
+    firstName: "Paweł",
     country: "Polska",
     occupation: "Frontend Developer",
     hobbies: ["programming", "reading", "retro gaming"],
@@ -12,15 +12,34 @@ const skills = ['Typescript', 'React', 'React Native', 'CSS', 'HTML', 'Flutter']
 const happy = true;
 const finished = false;
 const goal = 3;
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 
 ---
 
 
-<a href="/">Home</a>
-<a href="/about/">About</a>
-<a href="/blog/">Blog</a>
-
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{pageTitle}</title>
+    <style define:vars={{skillColor, fontWeight, textCase}}>
+      h1 {
+        color: purple;
+        font-size: 4rem;
+      }
+      .skill {
+        color: var(--skillColor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+      }
+    </style>
+  </head>
 <body>
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/blog/">Blog</a>
     <h1>{pageTitle}</h1>
     <h2>First astro site</h2>
     <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
@@ -36,7 +55,7 @@ const goal = 3;
     </ul>
     <p>My skills are:</p>
     <ul>
-        {skills.map((skill) => <li>{skill}</li>)}
+      {skills.map((skill) => <li class="skill">{skill}</li>)}
     </ul>
     {happy && <p>I am happy to be learning Astro!</p>}
 
@@ -44,3 +63,4 @@ const goal = 3;
 
     {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
 </body>
+</html>
